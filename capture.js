@@ -10,7 +10,7 @@ page.viewportSize = { width: width, height: height};
 page.open(url, function (status) {
 
   var waited = 0,
-      timeout = 1200000,
+      timeout = 60000,
       interval = 100;
 
   // Wait until the base64 is ready
@@ -34,7 +34,7 @@ page.open(url, function (status) {
     } else if (waited > timeout) {
 
       // Give up, something's wrong
-      require("system").stderr.write("Maximum timeout of "+Math.round(timeout/1000)+"s exceeded.\n");
+      require("system").stderr.write("Maximum timeout of " + timeout + "ms exceeded.\n");
       phantom.exit();
 
     }
