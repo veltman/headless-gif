@@ -1,5 +1,4 @@
-var fs = require("fs"),
-    page = require("webpage").create();
+var page = require("webpage").create();
 
 // Dimensions don't really matter but need to be non-zero
 var width = 1,
@@ -28,14 +27,14 @@ page.open(url, function (status) {
     if (base64) {
 
       // Write base64 to stdout for decoding
-      fs.write("/dev/stdout",base64);
+      console.log(base64);
 
       phantom.exit();
 
     } else if (waited > timeout) {
 
       // Give up, something's wrong
-      console.warn("Maximum timeout of "+Math.round(timeout/1000)+"s exceeded.");
+      require("system").stderr.write("Maximum timeout of "+Math.round(timeout/1000)+"s exceeded.\n");
       phantom.exit();
 
     }
